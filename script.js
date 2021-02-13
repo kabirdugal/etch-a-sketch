@@ -1,8 +1,8 @@
 const gridContainer = document.querySelector(".grid-container");
 const sizeButton = document.querySelector(".size-button");
-const optionsButtons = document.querySelectorAll('.options-button');
+const optionsButtons = document.querySelectorAll(".options-button");
 
-let color = 'black'
+let color;
 
 // Clears contents of grid
 function clearGrid() {
@@ -32,6 +32,7 @@ function createGrid(size) {
   // sets grid to be size nxn
   gridContainer.style.gridTemplateColumns = "auto ".repeat(size);
   gridContainer.style.gridTemplateRows = "auto ".repeat(size);
+  color = 'black';
   // adds in grid boxes to grid
   for (i = 0; i < size; i++) {
     for (j = 0; j < size; j++) {
@@ -45,7 +46,15 @@ function createGrid(size) {
 
 // Colors in the square if hovered over
 function colorGrid(e) {
-  e.target.style.backgroundColor = colorChooser(e);
+    console.log(color);
+  if (color == 'black') {
+    e.target.style.backgroundColor = color;
+  } else if (color == 'white') {
+    e.target.style.backgroundColor = color;
+  } else {
+    e.target.style.backgroundColor = random_rgba();
+  }
+    
 }
 
 // Generates random RGBA color value
@@ -66,18 +75,17 @@ function random_rgba() {
   );
 }
 
-// Changes color of drawing 
+// Changes color of drawing
 function colorChooser(e) {
-    
-    if (e.target.id === 'black') {
-        return 'black';
-    } else if (e.target.id === 'white') {
-        return 'white';
-    } else {
-        return random_rgba();
-    }
+  if (e.target.id === "black") {
+    color = "black";
+  } else if (e.target.id === "white") {
+    color = "white";
+  } else {
+    color = 'colorful';
+  }
 }
 
 window.addEventListener("load", createGrid(25)); // initializes grid
 sizeButton.addEventListener("click", setGridSize); // resizes grid
-optionsButtons.forEach(btn => btn.addEventListener('click', colorChooser))
+optionsButtons.forEach((btn) => btn.addEventListener("click", colorChooser));
