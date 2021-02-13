@@ -3,7 +3,9 @@
     <head>
         <title>Etch-A-Sketch</title>
         <meta charset="UTF-8" />
-        <link rel='stylesheet' href="main.css">       
+        <link rel='stylesheet' href="main.css">    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">      
     </head>
 
     <body>
@@ -12,12 +14,17 @@
         </header>
         <main>
             <button class='size-button'>Change Size</button>
+            <div class='options-panel'>
+                <button class='options-button' id='white'>Eraser</button>
+                <button class='options-button' id='black'>Black</button>
+                <button class='options-button' id='colorful'>Colorful</button>
+            </div>
             <div class='grid-container'>
                 
             </div>
 
         </main>
-        
+        <footer>A project by Kabir Singh Dugal</footer>
     </body>
 
     <script src=script.js></script>
