@@ -11,12 +11,20 @@ function clearGrid() {
 
 // Resizes the grid via a prompt
 function setGridSize() {
-    let size = prompt(
+    let newSize = prompt(
         'Please enter a number between 1 and 100.'
     )
 
-    clearGrid();
-    createGrid(size);
+    if (newSize !== null) {
+        newSize = parseInt(newSize);
+        if (newSize < 1 || newSize > 100 || Number.isNaN(newSize)) {
+          alert("Invalid entry! Please enter a number between 1 and 100.");
+          setGridSize();
+        } else {
+          clearGrid();
+          createGrid(newSize);
+        }
+      }
 } 
 
 // Creates the grid
@@ -37,8 +45,16 @@ function createGrid(size) {
 
 // Colors in the square if hovered over
 function colorGrid(e) {
-    e.target.style.backgroundColor = 'black';
+    e.target.style.backgroundColor = random_rgba();
 }
+
+function random_rgba() {
+    let o = Math.round
+    r = Math.random
+    s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
 
 window.addEventListener('load', createGrid(25));
 sizeButton.addEventListener('click', setGridSize);
