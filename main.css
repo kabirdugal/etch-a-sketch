@@ -11,12 +11,11 @@ button {
 }
 
 .grid-container {
-    border: 1px solid black;
+    border: 3px black solid;
     height: 740px;
     width: 740px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
 }
 
 .grid-box {
